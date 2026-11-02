@@ -3,76 +3,68 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VELQOR MARKETS</title>
 <style>
-:root{--bg:#080d14;--panel:#111a25;--panel2:#172332;--line:#273647;--gold:#d5ad58;--green:#13b981;--red:#ef5350;--muted:#91a0b2}
+:root{--bg:#080d14;--panel:#111a25;--panel2:#192635;--line:#29394b;--gold:#d5ad58;--green:#16c784;--red:#ea5353;--muted:#91a0b2}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#f3f5f8;font:14px Arial,sans-serif}
+body{margin:0;background:var(--bg);color:#f4f6f8;font:14px Arial,sans-serif}
 button,input,select{font:inherit}
-button{cursor:pointer;border:0}
-header{height:62px;background:#0d141e;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 17px;position:sticky;top:0;z-index:5}
-.logo{font-weight:900;letter-spacing:2px;color:var(--gold);font-size:20px}
-.tag{font-size:10px;background:#173d32;color:#61dfad;padding:5px 8px;border-radius:5px}
-.wrap{max-width:1100px;margin:auto;padding:15px}
-.hidden{display:none!important}
-.panel,.card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:14px;margin-bottom:12px}
-h2,h3{margin:0 0 12px}h2{font-size:19px}h3{font-size:14px;color:#d5ad58}
+button{cursor:pointer;border:0;border-radius:7px;padding:12px;font-weight:bold}
+input,select{width:100%;padding:12px;margin:5px 0;background:#09121d;color:white;border:1px solid var(--line);border-radius:7px}
+header{height:60px;background:#0d141e;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 15px;position:sticky;top:0;z-index:5}
+.logo{font-size:19px;font-weight:900;letter-spacing:2px;color:var(--gold)}
+.tag,.pill{background:#19392f;color:#65dca9;padding:6px 9px;border-radius:5px;font-size:10px}
+.wrap{max-width:1100px;margin:auto;padding:14px}
+.panel,.metric{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px}
+h2{font-size:19px;margin:0 0 13px}h3{font-size:14px;color:var(--gold);margin:0 0 12px}
 small,.muted{color:var(--muted)}
-input,select{background:#09121d;color:white;border:1px solid var(--line);border-radius:7px;padding:12px;width:100%;margin:5px 0}
-.btn{padding:12px;border-radius:7px;font-weight:bold;width:100%;background:var(--gold);color:#10151c;margin:4px 0}
-.btn2{background:#263548;color:white}
+.btn{width:100%;background:var(--gold);color:#111;margin:4px 0}
+.secondary{background:#29394b;color:white}
 .buy{background:#087d5a;color:white}.sell{background:#b83239;color:white}
-.green{color:var(--green)}.red{color:var(--red)}.gold{color:var(--gold)}
+.green{color:var(--green)}.red{color:var(--red)}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.metric{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:13px;min-width:0}
-.metric small{display:block;font-size:11px}.metric strong{display:block;font-size:19px;margin-top:9px;overflow-wrap:anywhere}
+.metric small{display:block}.metric strong{display:block;font-size:19px;margin-top:8px;overflow-wrap:anywhere}
 .row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.flex{display:flex;gap:9px}.flex>*{flex:1;min-width:0}
-.nav{display:flex;gap:5px;overflow:auto;background:#0d141e;padding:8px;position:sticky;top:62px;z-index:4;border-bottom:1px solid var(--line)}
-.nav button{flex:1;min-width:65px;background:transparent;color:#aab7c6;padding:10px 5px;border-radius:7px;font-size:11px}
-.nav button.active{background:#263445;color:var(--gold)}
-.page{display:none;animation:fade .2s ease}.page.active{display:block}
-@keyframes fade{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
-.price{font-size:27px;font-weight:bold;letter-spacing:.5px}
-#chart{width:100%;height:260px;display:block;background:#0a121c;border-radius:8px}
-.charttools{display:flex;gap:6px;margin:10px 0}.charttools button{background:#263548;color:#fff;padding:7px 12px;border-radius:5px}
-.charttools button.active{background:var(--gold);color:#111}
-table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:12px}
-th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left}
-.scroll{overflow:auto}
-.auth{max-width:410px;margin:45px auto}
+.flex{display:flex;gap:8px}.flex>*{flex:1;min-width:0}
+.nav{display:flex;gap:4px;overflow:auto;position:sticky;top:60px;z-index:4;background:#0d141e;padding:7px;border-bottom:1px solid var(--line)}
+.nav button{flex:1;min-width:60px;background:transparent;color:#aab7c6;font-size:11px;padding:10px 4px}
+.nav button.active{background:#29394b;color:var(--gold)}
+.page{display:none}.page.active{display:block}
+.auth{max-width:420px;margin:40px auto}
 .auth .panel{padding:22px}
-.message{font-size:12px;min-height:18px;margin:6px 0}
-.pill{padding:5px 8px;border-radius:5px;background:#263548;font-size:10px}
-.bottomnote{text-align:center;color:#718096;font-size:10px;padding:20px}
-@media(max-width:650px){
- .grid{grid-template-columns:repeat(2,1fr)}
- .metric strong{font-size:17px}
- .wrap{padding:10px}
- #chart{height:230px}
- header{height:56px}.nav{top:56px}
- .nav button{font-size:10px}
-}
+.message{min-height:18px;font-size:12px}
+.price{font-size:27px;font-weight:bold}
+#chart{width:100%;height:250px;background:#09121d;border-radius:8px;display:block}
+.charttools{display:flex;gap:6px;margin:10px 0}
+.charttools button{background:#29394b;color:white;padding:8px 13px}
+.charttools button.active{background:var(--gold);color:#111}
+.scroll{overflow:auto}
+table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:12px}
+td,th{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+.hidden{display:none!important}
+.note{text-align:center;color:#718096;font-size:10px;padding:20px}
+@media(max-width:650px){.grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:10px}.metric strong{font-size:17px}#chart{height:220px}.nav{top:56px}header{height:56px}}
 </style>
 </head>
 <body>
+
 <header>
  <div class="logo">VELQOR <span style="color:white">MARKETS</span></div>
- <div class="row"><span class="tag">DEMO ACCOUNT</span><button class="btn btn2" style="width:auto;padding:8px 12px" onclick="logout()">Logout</button></div>
+ <div class="row"><span class="tag">DEMO ACCOUNT</span><button class="secondary" onclick="logout()">Logout</button></div>
 </header>
 
 <section id="auth" class="wrap auth">
  <div class="panel">
   <div class="logo" style="text-align:center;margin:12px">VELQOR MARKETS</div>
-  <h2 id="authTitle">Create your demo account</h2>
+  <h2 id="authTitle">Create demo account</h2>
   <p class="muted">Practice trading with virtual funds.</p>
-  <input id="fullName" placeholder="Full name">
-  <input id="email" type="email" placeholder="Email address">
-  <input id="password" type="password" placeholder="Password (6+ characters)">
+  <input id="fullName" placeholder="Full name" autocomplete="name">
+  <input id="email" type="email" placeholder="Email address" autocomplete="email">
+  <input id="password" type="password" placeholder="Password (6+ characters)" autocomplete="current-password">
   <p id="authMsg" class="message red"></p>
   <button class="btn" id="authBtn" onclick="authSubmit()">CREATE ACCOUNT</button>
-  <button class="btn btn2" onclick="toggleAuth()" id="authToggle">Already have an account? Login</button>
+  <button class="btn secondary" id="authToggle" onclick="toggleAuth()">Already have an account? Login</button>
   <p class="muted">Demo simulation only. No real deposits or trading.</p>
  </div>
 </section>
@@ -89,9 +81,9 @@ th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left}
 
 <main class="wrap">
 <section id="home" class="page active">
- <div class="row" style="margin:5px 0 14px">
+ <div class="row">
   <div><small>ACCOUNT OVERVIEW</small><h2>Welcome, <span id="welcome">Trader</span></h2></div>
-  <span class="pill green">● Demo active</span>
+  <span class="pill">● Demo active</span>
  </div>
  <div class="grid">
   <div class="metric"><small>Balance</small><strong id="bal">$500.00</strong></div>
@@ -99,22 +91,22 @@ th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left}
   <div class="metric"><small>Floating P/L</small><strong id="pnl">$0.00</strong></div>
   <div class="metric"><small>Free Margin</small><strong id="free">$500.00</strong></div>
  </div>
- <div class="panel" style="margin-top:13px">
+ <div class="panel" style="margin-top:12px">
   <div class="row"><h3>Market Watch</h3><span class="pill">SIMULATED FEED</span></div>
   <div class="row">
    <div><b>Gold / US Dollar</b><br><small>XAUUSD</small></div>
-   <div style="text-align:right"><div class="price" id="homePrice">--</div><small id="homeChange">Demo price</small></div>
+   <div style="text-align:right"><div class="price" id="homePrice">3980.65</div><small>Simulated price</small></div>
   </div>
-  <div class="flex" style="margin-top:12px">
-   <button class="btn buy" onclick="showPage('trade')">BUY GOLD</button>
-   <button class="btn sell" onclick="showPage('trade')">SELL GOLD</button>
+  <div class="flex" style="margin-top:10px">
+   <button class="btn buy" onclick="goTrade()">BUY GOLD</button>
+   <button class="btn sell" onclick="goTrade()">SELL GOLD</button>
   </div>
  </div>
  <div class="panel">
   <h3>Account statistics</h3>
   <div class="row"><span class="muted">Open positions</span><b id="openCount">0</b></div>
-  <div class="row" style="margin-top:12px"><span class="muted">Pending orders</span><b id="pendingCount">0</b></div>
-  <div class="row" style="margin-top:12px"><span class="muted">Used margin</span><b id="usedMargin">$0.00</b></div>
+  <div class="row"><span class="muted">Pending orders</span><b id="pendingCount">0</b></div>
+  <div class="row"><span class="muted">Used margin</span><b id="usedMargin">$0</b></div>
  </div>
 </section>
 
@@ -122,8 +114,8 @@ th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left}
  <div class="row"><h2>Trading terminal</h2><span class="pill">XAUUSD · DEMO</span></div>
  <div class="panel">
   <div class="row">
-   <div><small>GOLD / US DOLLAR</small><div class="price" id="tradePrice">--</div></div>
-   <div style="text-align:right"><small>Spread</small><b id="spread">0.30</b></div>
+   <div><small>GOLD / US DOLLAR</small><div class="price" id="tradePrice">3980.65</div></div>
+   <div><small>Spread</small><b id="spread">0.30</b></div>
   </div>
   <div class="charttools">
    <button class="active" onclick="setTF(1,this)">1m</button>
@@ -132,26 +124,31 @@ th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left}
    <button onclick="setTF(60,this)">1H</button>
   </div>
   <canvas id="chart"></canvas>
-  <small>Illustrative simulated candles — not exchange historical data.</small>
+  <small>Illustrative simulated candles, not real exchange history.</small>
  </div>
  <div class="panel">
-  <h3>New order</h3>
-  <div class="row"><label>Volume (lots)</label><span class="muted">Min 0.01 · Max 1.00</span></div>
+  <h3>New market order</h3>
+  <label>Volume (lots)</label>
   <input id="lots" type="number" value="0.01" min="0.01" max="1" step="0.01">
   <div class="grid" style="grid-template-columns:1fr 1fr">
-   <div><label class="muted">Stop Loss (price)</label><input id="sl" type="number" placeholder="Optional" step="0.01"></div>
-   <div><label class="muted">Take Profit (price)</label><input id="tp" type="number" placeholder="Optional" step="0.01"></div>
+   <div><label class="muted">Stop Loss</label><input id="sl" type="number" placeholder="Optional" step="0.01"></div>
+   <div><label class="muted">Take Profit</label><input id="tp" type="number" placeholder="Optional" step="0.01"></div>
   </div>
   <div class="flex">
    <button class="btn buy" onclick="openTrade('BUY')">BUY</button>
    <button class="btn sell" onclick="openTrade('SELL')">SELL</button>
   </div>
-  <p class="muted">Demo calculation: $100 per $1 price move per 1.00 lot. Estimated margin uses 1:100 leverage.</p>
+  <p class="muted">Illustrative P/L: $100 per $1 price move per 1 lot. Margin estimate uses 1:100 leverage.</p>
   <p id="tradeMsg" class="message"></p>
  </div>
  <div class="panel">
   <h3>Pending order</h3>
-  <select id="pendingType"><option value="BUY_LIMIT">Buy Limit</option><option value="SELL_LIMIT">Sell Limit</option><option value="BUY_STOP">Buy Stop</option><option value="SELL_STOP">Sell Stop</option></select>
+  <select id="pendingType">
+   <option value="BUY_LIMIT">Buy Limit</option>
+   <option value="SELL_LIMIT">Sell Limit</option>
+   <option value="BUY_STOP">Buy Stop</option>
+   <option value="SELL_STOP">Sell Stop</option>
+  </select>
   <input id="pendingPrice" type="number" placeholder="Trigger price" step="0.01">
   <input id="pendingLots" type="number" value="0.01" min="0.01" max="1" step="0.01">
   <button class="btn" onclick="addPending()">PLACE PENDING ORDER</button>
@@ -167,169 +164,274 @@ th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left}
  </div>
  <div class="panel" style="margin-top:12px">
   <h3>Open positions</h3>
-  <div class="scroll"><table><thead><tr><th>Instrument</th><th>Type</th><th>Lots</th><th>Open</th><th>Current</th><th>P/L</th><th></th></tr></thead><tbody id="positionRows"></tbody></table></div>
+  <div class="scroll"><table>
+   <thead><tr><th>Symbol</th><th>Type</th><th>Lots</th><th>Entry</th><th>Current</th><th>P/L</th><th></th></tr></thead>
+   <tbody id="positionRows"></tbody>
+  </table></div>
  </div>
 </section>
 
 <section id="history" class="page">
  <h2>Trade history</h2>
- <div class="panel">
-  <div class="row"><h3>Closed trades</h3><span class="pill">Account records</span></div>
-  <div class="scroll"><table><thead><tr><th>Instrument</th><th>Type</th><th>Lots</th><th>Open</th><th>Close</th><th>Profit</th><th>Reason</th></tr></thead><tbody id="historyRows"></tbody></table></div>
- </div>
+ <div class="panel"><div class="scroll"><table>
+  <thead><tr><th>Symbol</th><th>Type</th><th>Lots</th><th>Entry</th><th>Exit</th><th>Profit</th><th>Reason</th></tr></thead>
+  <tbody id="historyRows"></tbody>
+ </table></div></div>
 </section>
 
 <section id="wallet" class="page">
  <h2>Demo wallet</h2>
  <div class="metric"><small>Available demo balance</small><strong id="walletBal">$500.00</strong></div>
  <div class="panel" style="margin-top:12px">
-  <h3>Demo funds</h3>
-  <p class="muted">Add or reset virtual practice funds. No real money is involved.</p>
-  <button class="btn" onclick="demoFunds(500)">ADD $500 DEMO</button>
-  <button class="btn btn2" onclick="resetBalance()">RESET BALANCE TO $500</button>
+  <h3>Virtual funds</h3>
+  <p class="muted">These funds have no real cash value.</p>
+  <button class="btn" onclick="demoFunds()">ADD $500 DEMO</button>
+  <button class="btn secondary" onclick="resetBalance()">RESET BALANCE TO $500</button>
   <p id="walletMsg" class="message"></p>
  </div>
- <div class="panel"><h3>Wallet activity</h3><div id="walletHistory" class="muted">No activity yet.</div></div>
+ <div class="panel"><h3>Wallet activity</h3><div id="walletHistory">No activity yet.</div></div>
 </section>
 
 <section id="profile" class="page">
  <h2>Profile & settings</h2>
  <div class="panel">
   <h3>Account details</h3>
-  <div class="row"><span class="muted">Name</span><b id="profileName">Trader</b></div><hr style="border-color:var(--line)">
-  <div class="row"><span class="muted">Email</span><b id="profileEmail">--</b></div><hr style="border-color:var(--line)">
-  <div class="row"><span class="muted">Account type</span><b class="green">DEMO</b></div><hr style="border-color:var(--line)">
+  <div class="row"><span class="muted">Name</span><b id="profileName">Trader</b></div><hr>
+  <div class="row"><span class="muted">Email</span><b id="profileEmail">--</b></div><hr>
+  <div class="row"><span class="muted">Account type</span><b class="green">DEMO</b></div><hr>
   <div class="row"><span class="muted">Account number</span><b id="accountNumber">--</b></div>
-  <button class="btn btn2" onclick="logout()">LOG OUT</button>
+  <button class="btn secondary" onclick="logout()">LOG OUT</button>
  </div>
  <div class="panel">
-  <h3>Risk information</h3>
-  <p class="muted">This is a local browser-based simulation. It does not connect to Exness, MT5, a bank, or a real exchange. Data may be lost if browser storage is cleared.</p>
+  <h3>Important information</h3>
+  <p class="muted">This is a local browser-based trading simulator. It does not connect to Exness, MT5, a bank or a real exchange. Account data is stored in this browser and may be lost if browser data is cleared.</p>
  </div>
 </section>
-<div class="bottomnote">VELQOR MARKETS · DEMO TRADING SIMULATOR · NOT A BROKER</div>
+<div class="note">VELQOR MARKETS · DEMO SIMULATOR · NOT A BROKER</div>
 </main>
 </div>
 
 <script>
-const USERS_KEY="velqor_demo_users_v1",SESSION_KEY="velqor_demo_session_v1";
+"use strict";
+const USERS_KEY="velqor_demo_users_v1";
+const SESSION_KEY="velqor_demo_session_v1";
 const API="https://velqor-markets-api.meshahzaibali.workers.dev/api/quotes";
-let authMode="signup",user=null,bid=3980.5,ask=3980.8,mid=3980.65,base=3980.65;
-let candles=[],tf=5,lastMid=mid,walletLog=[];
 const $=id=>document.getElementById(id);
 const money=n=>"$"+Number(n||0).toFixed(2);
-const num=n=>Number(n).toFixed(2);
-function users(){try{return JSON.parse(localStorage.getItem(USERS_KEY)||"[]")}catch(e){return []}}
+const num=n=>Number(n||0).toFixed(2);
+
+let authMode="signup",user=null;
+let bid=3980.50,ask=3980.80,mid=3980.65;
+let candles=[],tf=5,priceTimer=null;
+
+function users(){
+ try{return JSON.parse(localStorage.getItem(USERS_KEY)||"[]")}
+ catch(e){return []}
+}
 function saveUsers(a){localStorage.setItem(USERS_KEY,JSON.stringify(a))}
-function saveUser(){let a=users(),i=a.findIndex(x=>x.id===user.id);if(i>=0){a[i]=user;saveUsers(a)}}
+function saveUser(){
+ if(!user)return;
+ let a=users(),i=a.findIndex(x=>x.id===user.id);
+ if(i>=0){a[i]=user;saveUsers(a)}
+}
+function makeId(){
+ return "VQ"+Date.now().toString(36).toUpperCase()+Math.random().toString(36).slice(2,6).toUpperCase();
+}
 function toggleAuth(){
  authMode=authMode==="signup"?"login":"signup";
- $("authTitle").textContent=authMode==="signup"?"Create your demo account":"Login to VELQOR";
+ $("authTitle").textContent=authMode==="signup"?"Create demo account":"Login to VELQOR";
  $("authBtn").textContent=authMode==="signup"?"CREATE ACCOUNT":"LOGIN";
  $("authToggle").textContent=authMode==="signup"?"Already have an account? Login":"New user? Create account";
  $("fullName").classList.toggle("hidden",authMode==="login");
  $("authMsg").textContent="";
 }
-async function hash(p,s){
- let k=await crypto.subtle.importKey("raw",new TextEncoder().encode(p),"PBKDF2",false,["deriveBits"]);
- let b=await crypto.subtle.deriveBits({name:"PBKDF2",salt:new TextEncoder().encode(s),iterations:100000,hash:"SHA-256"},k,256);
- return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+async function makeHash(password,salt){
+ if(!window.crypto?.subtle)throw new Error("Secure login unavailable. Open this website in Chrome using HTTPS.");
+ const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(password),"PBKDF2",false,["deriveBits"]);
+ const bits=await crypto.subtle.deriveBits({name:"PBKDF2",salt:new TextEncoder().encode(salt),iterations:100000,hash:"SHA-256"},key,256);
+ return Array.from(new Uint8Array(bits)).map(x=>x.toString(16).padStart(2,"0")).join("");
 }
 async function authSubmit(){
- let email=$("email").value.trim().toLowerCase(),pass=$("password").value,name=$("fullName").value.trim(),a=users();
- $("authMsg").textContent="";
- if(!email.includes("@")||pass.length<6){$("authMsg").textContent="Enter a valid email and password of at least 6 characters.";return}
- if(authMode==="signup"){
-  if(!name){$("authMsg").textContent="Enter your name.";return}
-  if(a.some(x=>x.email===email)){$("authMsg").textContent="Email already registered. Please login.";return}
-  let salt=crypto.randomUUID();
-  user={id:crypto.randomUUID(),name,email,salt,hash:await hash(pass,salt),balance:500,positions:[],pending:[],history:[],wallet:[]};
-  a.push(user);saveUsers(a);
- }else{
-  user=a.find(x=>x.email===email);
-  if(!user||await hash(pass,user.salt)!==user.hash){$("authMsg").textContent="Email or password incorrect.";return}
-  user.positions=user.positions||[];user.pending=user.pending||[];user.history=user.history||[];user.wallet=user.wallet||[];
+ const btn=$("authBtn");
+ btn.disabled=true;btn.textContent="PLEASE WAIT...";
+ try{
+  const email=$("email").value.trim().toLowerCase();
+  const pass=$("password").value;
+  const name=$("fullName").value.trim();
+  const a=users();
+  $("authMsg").textContent="";
+  if(!email.includes("@")||!email.includes(".")||pass.length<6){
+   $("authMsg").textContent="Enter a valid email and password with at least 6 characters.";return;
+  }
+  if(authMode==="signup"){
+   if(!name){$("authMsg").textContent="Please enter your name.";return}
+   if(a.some(x=>x.email===email)){$("authMsg").textContent="Email already registered. Please login.";return}
+   const salt=makeId();
+   user={id:makeId(),name,email,salt,hash:await makeHash(pass,salt),balance:500,positions:[],pending:[],history:[],wallet:[]};
+   a.push(user);saveUsers(a);
+  }else{
+   user=a.find(x=>x.email===email);
+   if(!user){$("authMsg").textContent="Account not found. Please sign up first.";return}
+   const entered=await makeHash(pass,user.salt);
+   if(entered!==user.hash){user=null;$("authMsg").textContent="Incorrect password.";return}
+   user.positions=user.positions||[];
+   user.pending=user.pending||[];
+   user.history=user.history||[];
+   user.wallet=user.wallet||[];
+  }
+  localStorage.setItem(SESSION_KEY,user.id);
+  enterApp();
+ }catch(e){
+  $("authMsg").textContent=e.message||"Login error. Please refresh and try again.";
+ }finally{
+  btn.disabled=false;
+  btn.textContent=authMode==="signup"?"CREATE ACCOUNT":"LOGIN";
  }
- localStorage.setItem(SESSION_KEY,user.id);enterApp();
 }
 function enterApp(){
- $("auth").classList.add("hidden");$("app").classList.remove("hidden");
- $("welcome").textContent=user.name;$("profileName").textContent=user.name;$("profileEmail").textContent=user.email;
- $("accountNumber").textContent=user.id.slice(0,8).toUpperCase();
+ $("auth").classList.add("hidden");
+ $("app").classList.remove("hidden");
+ $("welcome").textContent=user.name;
+ $("profileName").textContent=user.name;
+ $("profileEmail").textContent=user.email;
+ $("accountNumber").textContent=user.id.slice(0,12).toUpperCase();
  render();showPage("home");
 }
-function logout(){localStorage.removeItem(SESSION_KEY);user=null;$("app").classList.add("hidden");$("auth").classList.remove("hidden");$("password").value=""}
+function logout(){
+ localStorage.removeItem(SESSION_KEY);
+ user=null;
+ $("app").classList.add("hidden");
+ $("auth").classList.remove("hidden");
+ $("password").value="";
+ $("authMsg").textContent="You have logged out.";
+}
 function showPage(id,btn){
  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
  $(id).classList.add("active");
  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
  if(btn)btn.classList.add("active");
- else{let i=["home","trade","positions","history","wallet","profile"].indexOf(id);document.querySelectorAll(".nav button")[i]?.classList.add("active")}
- if(id==="trade")setTimeout(drawChart,30);
+ else{
+  const i=["home","trade","positions","history","wallet","profile"].indexOf(id);
+  document.querySelectorAll(".nav button")[i]?.classList.add("active");
+ }
+ if(id==="trade")setTimeout(drawChart,50);
 }
+function goTrade(){showPage("trade");}
 function profit(p){
- let close=p.type==="BUY"?bid:ask;
+ const close=p.type==="BUY"?bid:ask;
  return (p.type==="BUY"?close-p.entry:p.entry-close)*p.lots*100;
 }
 function floating(){return user.positions.reduce((s,p)=>s+profit(p),0)}
-function marginUsed(){return user.positions.reduce((s,p)=>s+(p.entry*p.lots*100/100),0)}
+function marginUsed(){return user.positions.reduce((s,p)=>s+p.entry*p.lots,0)}
 function render(){
  if(!user)return;
- let pnl=floating(),equity=user.balance+pnl,margin=marginUsed();
- $("bal").textContent=money(user.balance);$("eq").textContent=money(equity);$("pnl").textContent=money(pnl);
- $("pnl").className=pnl>=0?"green":"red";$("free").textContent=money(equity-margin);
- $("usedMargin").textContent=money(margin);$("openCount").textContent=user.positions.length;
- $("pendingCount").textContent=user.pending.length;$("homePrice").textContent=num(mid);
- $("tradePrice").textContent=num(mid);$("spread").textContent=num(ask-bid);
- $("portfolioCount").textContent=user.positions.length;$("portfolioPnl").textContent=money(pnl);
+ const pnl=floating(),equity=user.balance+pnl,margin=marginUsed();
+ $("bal").textContent=money(user.balance);
+ $("eq").textContent=money(equity);
+ $("pnl").textContent=money(pnl);
+ $("pnl").className=pnl>=0?"green":"red";
+ $("free").textContent=money(equity-margin);
+ $("usedMargin").textContent=money(margin);
+ $("openCount").textContent=user.positions.length;
+ $("pendingCount").textContent=user.pending.length;
+ $("homePrice").textContent=num(mid);
+ $("tradePrice").textContent=num(mid);
+ $("spread").textContent=num(ask-bid);
+ $("portfolioCount").textContent=user.positions.length;
+ $("portfolioPnl").textContent=money(pnl);
  $("walletBal").textContent=money(user.balance);
- $("positionRows").innerHTML=user.positions.map((p,i)=>`<tr><td>XAUUSD</td><td class="${p.type==="BUY"?"green":"red"}">${p.type}</td><td>${p.lots.toFixed(2)}</td><td>${num(p.entry)}</td><td>${num(p.type==="BUY"?bid:ask)}</td><td class="${profit(p)>=0?"green":"red"}">${money(profit(p))}</td><td><button class="btn btn2" style="padding:7px" onclick="closePosition(${i},'Manual')">Close</button></td></tr>`).join("")||'<tr><td colspan="7">No open positions</td></tr>';
- $("historyRows").innerHTML=user.history.slice().reverse().map(p=>`<tr><td>XAUUSD</td><td>${p.type}</td><td>${p.lots.toFixed(2)}</td><td>${num(p.entry)}</td><td>${num(p.exit)}</td><td class="${p.pnl>=0?"green":"red"}">${money(p.pnl)}</td><td>${p.reason}</td></tr>`).join("")||'<tr><td colspan="7">No closed trades yet</td></tr>';
- $("pendingList").innerHTML=user.pending.map((p,i)=>`<div class="row" style="padding:8px 0;border-bottom:1px solid #273647"><span>${p.type} · ${p.lots} lots · ${num(p.price)}</span><button class="btn btn2" style="width:auto;padding:6px" onclick="cancelPending(${i})">Cancel</button></div>`).join("")||"No pending orders";
- $("walletHistory").innerHTML=user.wallet.slice().reverse().map(x=>`<p>${x.label} — ${money(x.amount)}</p>`).join("")||"No activity yet.";
+
+ $("positionRows").innerHTML=user.positions.map((p,i)=>{
+  const pl=profit(p);
+  return `<tr><td>XAUUSD</td><td class="${p.type==="BUY"?"green":"red"}">${p.type}</td><td>${p.lots.toFixed(2)}</td><td>${num(p.entry)}</td><td>${num(p.type==="BUY"?bid:ask)}</td><td class="${pl>=0?"green":"red"}">${money(pl)}</td><td><button class="secondary" onclick="closePosition(${i},'Manual')">Close</button></td></tr>`;
+ }).join("")||'<tr><td colspan="7">No open positions</td></tr>';
+
+ $("historyRows").innerHTML=user.history.slice().reverse().map(p=>
+ `<tr><td>XAUUSD</td><td>${p.type}</td><td>${Number(p.lots).toFixed(2)}</td><td>${num(p.entry)}</td><td>${num(p.exit)}</td><td class="${p.pnl>=0?"green":"red"}">${money(p.pnl)}</td><td>${p.reason}</td></tr>`
+ ).join("")||'<tr><td colspan="7">No closed trades yet</td></tr>';
+
+ $("pendingList").innerHTML=user.pending.map((p,i)=>
+ `<div class="row" style="padding:8px;border-bottom:1px solid #29394b"><span>${p.type} · ${p.lots} lots · ${num(p.price)}</span><button class="secondary" onclick="cancelPending(${i})">Cancel</button></div>`
+ ).join("")||"No pending orders";
+
+ $("walletHistory").innerHTML=user.wallet.slice().reverse().map(x=>
+ `<p>${x.label} — ${money(x.amount)}</p>`
+ ).join("")||"No activity yet.";
 }
 function openTrade(type,lotsArg,slArg,tpArg){
  if(!user)return;
- let lots=Number(lotsArg??$("lots").value),sl=Number(slArg??$("sl").value)||0,tp=Number(tpArg??$("tp").value)||0;
- if(!Number.isFinite(lots)||lots<.01||lots>1){$("tradeMsg").textContent="Lot size must be between 0.01 and 1.00.";return}
- let entry=type==="BUY"?ask:bid;
- if(sl&&((type==="BUY"&&sl>=entry)||(type==="SELL"&&sl<=entry))){$("tradeMsg").textContent="Stop Loss is on the wrong side of entry price.";return}
- if(tp&&((type==="BUY"&&tp<=entry)||(type==="SELL"&&tp>=entry))){$("tradeMsg").textContent="Take Profit is on the wrong side of entry price.";return}
- user.positions.push({id:crypto.randomUUID(),type,lots,entry,sl,tp,created:Date.now()});
- saveUser();$("tradeMsg").textContent=type+" order opened at "+num(entry);$("tradeMsg").className="message green";render();
+ const lots=Number(lotsArg??$("lots").value);
+ const sl=Number(slArg??$("sl").value)||0;
+ const tp=Number(tpArg??$("tp").value)||0;
+ if(!Number.isFinite(lots)||lots<.01||lots>1){
+  $("tradeMsg").textContent="Lot size must be between 0.01 and 1.00.";return;
+ }
+ const entry=type==="BUY"?ask:bid;
+ if(sl&&((type==="BUY"&&sl>=entry)||(type==="SELL"&&sl<=entry))){
+  $("tradeMsg").textContent="Stop Loss is on the wrong side of entry.";return;
+ }
+ if(tp&&((type==="BUY"&&tp<=entry)||(type==="SELL"&&tp>=entry))){
+  $("tradeMsg").textContent="Take Profit is on the wrong side of entry.";return;
+ }
+ const requiredMargin=entry*lots;
+ if(user.balance+floating()<requiredMargin){
+  $("tradeMsg").textContent="Not enough free demo margin.";return;
+ }
+ user.positions.push({id:makeId(),type,lots,entry,sl,tp,created:Date.now()});
+ saveUser();
+ $("tradeMsg").textContent=type+" opened at "+num(entry);
+ $("tradeMsg").className="message green";
+ render();
 }
 function closePosition(i,reason){
- let p=user.positions[i];if(!p)return;
- let exit=p.type==="BUY"?bid:ask,pnl=(p.type==="BUY"?exit-p.entry:p.entry-exit)*p.lots*100;
- user.balance+=pnl;user.history.push({...p,exit,pnl,reason,closed:Date.now()});
- user.positions.splice(i,1);saveUser();render();
+ const p=user.positions[i];if(!p)return;
+ const exit=p.type==="BUY"?bid:ask;
+ const pnl=(p.type==="BUY"?exit-p.entry:p.entry-exit)*p.lots*100;
+ user.balance+=pnl;
+ user.history.push({...p,exit,pnl,reason,closed:Date.now()});
+ user.positions.splice(i,1);
+ saveUser();render();
 }
 function checkStops(){
+ if(!user)return;
  for(let i=user.positions.length-1;i>=0;i--){
-  let p=user.positions[i],price=p.type==="BUY"?bid:ask;
+  const p=user.positions[i],price=p.type==="BUY"?bid:ask;
   if(p.sl&&((p.type==="BUY"&&price<=p.sl)||(p.type==="SELL"&&price>=p.sl)))closePosition(i,"Stop Loss");
   else if(p.tp&&((p.type==="BUY"&&price>=p.tp)||(p.type==="SELL"&&price<=p.tp)))closePosition(i,"Take Profit");
  }
  for(let i=user.pending.length-1;i>=0;i--){
-  let p=user.pending[i],trigger=(p.type==="BUY_LIMIT"&&ask<=p.price)||(p.type==="SELL_LIMIT"&&bid>=p.price)||(p.type==="BUY_STOP"&&ask>=p.price)||(p.type==="SELL_STOP"&&bid<=p.price);
-  if(trigger){let type=p.type.startsWith("BUY")?"BUY":"SELL";user.pending.splice(i,1);openTrade(type,p.lots,p.sl,p.tp)}
+  const p=user.pending[i];
+  const hit=(p.type==="BUY_LIMIT"&&ask<=p.price)||(p.type==="SELL_LIMIT"&&bid>=p.price)||(p.type==="BUY_STOP"&&ask>=p.price)||(p.type==="SELL_STOP"&&bid<=p.price);
+  if(hit){
+   user.pending.splice(i,1);
+   const type=p.type.startsWith("BUY")?"BUY":"SELL";
+   openTrade(type,p.lots,0,0);
+   saveUser();
+  }
  }
 }
 function addPending(){
- let type=$("pendingType").value,price=Number($("pendingPrice").value),lots=Number($("pendingLots").value);
- if(!price||lots<.01||lots>1){alert("Enter a valid trigger price and lot size.");return}
- user.pending.push({type,price,lots});saveUser();render();
+ const type=$("pendingType").value;
+ const price=Number($("pendingPrice").value);
+ const lots=Number($("pendingLots").value);
+ if(!Number.isFinite(price)||price<=0||lots<.01||lots>1){
+  alert("Enter a valid trigger price and lot size.");return;
+ }
+ user.pending.push({type,price,lots});
+ saveUser();render();
+ $("pendingPrice").value="";
 }
 function cancelPending(i){user.pending.splice(i,1);saveUser();render()}
-function demoFunds(amount){user.balance+=amount;user.wallet.push({label:"Demo funds added",amount});saveUser();render();$("walletMsg").textContent="Virtual $500 added."; }
+function demoFunds(){
+ user.balance+=500;
+ user.wallet.push({label:"Demo funds added",amount:500});
+ saveUser();render();
+ $("walletMsg").textContent="Virtual $500 added.";
+}
 function resetBalance(){
- if(user.positions.length){$("walletMsg").textContent="Close all open trades before resetting.";return}
- user.balance=500;user.wallet.push({label:"Demo balance reset",amount:500});saveUser();render();$("walletMsg").textContent="Balance reset to $500.";
-}
-function setTF(n,btn){tf=n;document.querySelectorAll(".charttools button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");drawChart()}
-function seedCandles(){
- candles=[];let p=mid;
- for(let i=0;i<65;i++){let o=p,c=o+(Math.random()-.49)*1.4,h=Math.max(o,c)+Math.random()*.6,l=Math.min(o,c)-Math.random()*.6;candles.push({o,c,h,l});p=c}
-}
-function drawChart(){
- let canvas=$("
+ if(user.positions.length){
+  $("walletMsg").textContent="Close all open trades before resetting.";return;
+ }
+ user.balance=500;
+ user.wallet.push({label:"Demo balance reset",amount:500});
+ 
