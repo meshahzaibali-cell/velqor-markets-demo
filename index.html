@@ -3,134 +3,288 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VELQOR MARKETS</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#090d12;color:#eee;font:14px Arial}
-header{padding:20px;background:#111923;border-bottom:1px solid #303b49;display:flex;justify-content:space-between;align-items:center}
-.logo{color:#e5c477;font-size:20px;font-weight:bold;letter-spacing:2px}
-.tag{color:#e5c477;border:1px solid #806329;padding:7px;border-radius:15px;font-size:11px}
-nav{background:#111923;padding:13px;display:flex;gap:20px;overflow:auto}
-nav a{color:#ddd;text-decoration:none;white-space:nowrap}
-main{max-width:1250px;margin:auto;padding:17px}
-.notice{background:#292214;border:1px solid #79602b;color:#e9d49c;padding:12px;border-radius:9px;margin-bottom:15px}
-h2{font-size:22px}h3{font-size:15px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.card{background:#141c26;border:1px solid #303b49;border-radius:11px;padding:16px;margin-bottom:14px}
-.muted{color:#94a1b0;font-size:12px}
-.value{font-size:23px;font-weight:bold;margin-top:9px}
-.gold{color:#e5c477}.green{color:#29ca8c}.red{color:#ff6570}
-.columns{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}
-.market{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-.quote{background:#0c131b;padding:13px;border-radius:8px;border:1px solid #303b49}
-.price{font-size:19px;color:#e5c477;margin-top:8px}
-input,select,button{width:100%;padding:12px;margin:5px 0;border:1px solid #344150;border-radius:7px;background:#0a1119;color:white}
-button{cursor:pointer;font-weight:bold}.buy{background:#087d58;border:0}.sell{background:#b52e40;border:0}.close{background:#343d49}
-.table{overflow:auto}table{width:100%;border-collapse:collapse;min-width:550px}
-td,th{text-align:left;padding:11px;border-bottom:1px solid #303b49;font-size:12px}
-.chart iframe{width:100%;height:400px;border:0}
-footer{text-align:center;color:#8190a0;padding:25px}
-@media(max-width:700px){main{padding:11px}.cards{grid-template-columns:repeat(2,1fr)}.columns{grid-template-columns:1fr}.value{font-size:19px}}
+*{box-sizing:border-box}
+body{margin:0;background:#090d14;color:#f4f4f4;font-family:Arial,sans-serif}
+header{padding:18px;text-align:center;background:#111823;border-bottom:1px solid #b89543}
+.logo{color:#d9b45b;font-size:25px;font-weight:bold;letter-spacing:3px}
+.wrap{max-width:950px;margin:22px auto;padding:14px}
+.panel,.card{background:#121b28;border:1px solid #283448;border-radius:12px;padding:18px;margin-bottom:15px}
+.auth{max-width:420px;margin:55px auto}
+h2,h3{color:#d9b45b}
+input,button{width:100%;padding:13px;margin:7px 0;border-radius:7px;border:1px solid #39465a;background:#0b121d;color:white;font-size:15px}
+button{background:#c49b43;color:#111;font-weight:bold;border:0;cursor:pointer}
+button:hover{opacity:.9}
+button.secondary{background:#29374a;color:white}
+button.buy{background:#168c62;color:white}
+button.sell{background:#bd4141;color:white}
+small,.muted{color:#9aa8ba}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.value{font-size:23px;font-weight:bold;margin-top:8px}
+.market{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+#tv_chart{height:380px;width:100%;border-radius:8px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 5px;text-align:left;border-bottom:1px solid #293448}
+.hidden{display:none!important}
+.error{color:#ff7777}
+.success{color:#65d6a1}
+.actions{display:flex;gap:8px}
+.actions button{flex:1}
+@media(max-width:600px){.row{grid-template-columns:1fr}.wrap{padding:10px}.auth{margin:25px auto}#tv_chart{height:310px}}
 </style>
 </head>
 <body>
-<header><div class="logo">◈ VELQOR MARKETS</div><div class="tag">DEMO TERMINAL</div></header>
-<nav>
-<a href="#dashboard">Dashboard</a><a href="#markets">Markets</a><a href="#chart">Charts</a><a href="#trade">Trade</a><a href="#positions">Positions</a><a href="#history">History</a>
-</nav>
-<main>
-<div class="notice">DEMO ONLY — Virtual funds and simulated trading. No real broker execution or real deposits and withdrawals.</div>
-<section id="dashboard">
-<h2>Trading Dashboard</h2>
-<div class="cards">
-<div class="card"><div class="muted">BALANCE</div><div class="value" id="balance">$500.00</div></div>
-<div class="card"><div class="muted">EQUITY</div><div class="value" id="equity">$500.00</div></div>
-<div class="card"><div class="muted">FLOATING P/L</div><div class="value" id="floating">$0.00</div></div>
-<div class="card"><div class="muted">ACCOUNT TYPE</div><div class="value gold">DEMO</div></div>
+<header><div class="logo">VELQOR MARKETS</div><small>PROFESSIONAL DEMO TRADING PLATFORM</small></header>
+
+<section id="authScreen" class="wrap auth">
+<div class="panel">
+<h2 id="authTitle">Create Demo Account</h2>
+<p class="muted">Start trading with a virtual $500 balance.</p>
+<div id="nameBox"><input id="name" placeholder="Full name" autocomplete="name"></div>
+<input id="email" type="email" placeholder="Email address" autocomplete="email">
+<input id="password" type="password" placeholder="Password (minimum 6 characters)" autocomplete="current-password">
+<p id="authMessage" class="error"></p>
+<button id="authButton" onclick="submitAuth()">CREATE ACCOUNT</button>
+<button class="secondary" id="switchButton" onclick="switchAuth()">Already have an account? Login</button>
+<p class="muted">DEMO ONLY — No real deposits or withdrawals.</p>
 </div>
 </section>
-<div class="columns">
-<section class="card" id="markets">
-<h3>Market Watch</h3><div class="muted" id="status">Connecting...</div><div class="market" id="quotes"></div>
-</section>
-<section class="card" id="trade">
-<h3>New Demo Order</h3>
-<select id="symbol"><option>XAUUSD</option><option>EURUSD</option><option>GBPUSD</option><option>BTCUSD</option></select>
-<select id="side"><option>BUY</option><option>SELL</option></select>
-<select id="lots"><option>0.01</option><option>0.02</option><option>0.05</option><option>0.10</option><option>0.20</option><option>0.50</option><option>1.00</option></select>
-<input id="sl" type="number" placeholder="Stop Loss (optional)">
-<input id="tp" type="number" placeholder="Take Profit (optional)">
-<button class="buy" onclick="order()">PLACE DEMO ORDER</button>
-<div id="message" class="muted"></div>
-</section>
+
+<main id="dashboard" class="wrap hidden">
+<div class="market panel">
+<div><h2 style="margin:0">Welcome, <span id="userName">Trader</span></h2><small>DEMO ACCOUNT</small></div>
+<button class="secondary" style="width:auto;padding:10px 18px" onclick="logout()">LOGOUT</button>
 </div>
-<section class="card chart" id="chart">
-<h3>Trading Chart — XAUUSD</h3>
-<div id="tradingview" style="height:400px"></div>
-</section>
-<section class="card" id="positions">
-<h3>Open Positions</h3>
-<div class="table"><table><thead><tr><th>Ticket</th><th>Symbol</th><th>Side</th><th>Lots</th><th>Open</th><th>Current</th><th>P/L</th><th></th></tr></thead><tbody id="positionsList"></tbody></table></div>
-</section>
-<section class="card" id="history">
-<h3>Trading History</h3>
-<div class="table"><table><thead><tr><th>Ticket</th><th>Symbol</th><th>Side</th><th>Open</th><th>Close</th><th>P/L</th></tr></thead><tbody id="historyList"></tbody></table></div>
-</section>
-<section class="card">
-<h3>Account Settings</h3>
-<div class="muted">VELQOR DEMO ACCOUNT</div>
-<p>Account Type: Standard Demo</p>
-<p>Currency: USD</p>
-<button onclick="credit()">Add $1,000 Demo Credit</button>
-<button class="close" onclick="resetDemo()">Reset Demo Account</button>
-</section>
+
+<div class="row">
+<div class="card"><small>ACCOUNT BALANCE</small><div class="value" id="balance">$500.00</div></div>
+<div class="card"><small>EQUITY</small><div class="value" id="equity">$500.00</div></div>
+<div class="card"><small>OPEN P/L</small><div class="value" id="profit">$0.00</div></div>
+</div>
+
+<div class="panel">
+<h3>MARKET WATCH — XAUUSD</h3>
+<div class="market">
+<div><small>GOLD / US DOLLAR</small><div class="value" id="goldPrice">Loading...</div></div>
+<div><small>MARKET STATUS</small><div class="value success">DEMO</div></div>
+</div>
+<small id="quoteStatus">Connecting to demo market feed...</small>
+</div>
+
+<div class="panel">
+<h3>XAUUSD LIVE CHART — 5 MINUTES</h3>
+<div id="tv_chart"></div>
+</div>
+
+<div class="panel">
+<h3>PLACE DEMO TRADE</h3>
+<label>Volume (lots)</label>
+<input id="volume" type="number" min="0.01" max="1" step="0.01" value="0.01">
+<div class="actions">
+<button class="buy" onclick="placeTrade('BUY')">BUY</button>
+<button class="sell" onclick="placeTrade('SELL')">SELL</button>
+</div>
+<small>Orders are simulated in this browser. They are not sent to Exness or MT5.</small>
+<p id="tradeMessage"></p>
+</div>
+
+<div class="panel">
+<h3>OPEN POSITIONS</h3>
+<div style="overflow-x:auto">
+<table><thead><tr><th>TYPE</th><th>VOLUME</th><th>ENTRY</th><th>P/L</th><th>ACTION</th></tr></thead>
+<tbody id="positions"></tbody></table>
+</div>
+</div>
 </main>
-<footer>© 2026 VELQOR MARKETS • DEMO TRADING PLATFORM</footer>
+
 <script>
-const API="https://velqor-markets-api.meshahzaibali.workers.dev";
-const $=id=>document.getElementById(id);
-const money=n=>"$"+Number(n||0).toFixed(2);
-let quotes={},balance=500,positions=[],history=[];
-function save(){localStorage.setItem("velqorDemo",JSON.stringify({balance,positions,history}))}
-function load(){try{let x=JSON.parse(localStorage.getItem("velqorDemo"));if(x){balance=x.balance;positions=x.positions||[];history=x.history||[]}}catch(e){}}
-async function api(path,options={}){let r=await fetch(API+path,{headers:{"Content-Type":"application/json"},...options});let j=await r.json();if(!r.ok)throw Error(j.error||"API error");return j}
-async function refreshQuotes(){
-try{
-let q=await api("/api/quotes");quotes=q;
-$("quotes").innerHTML=Object.entries(q).map(([s,x])=>`<div class="quote"><b>${s}</b><div class="price">${Number(x.mid).toFixed(x.digits||2)}</div><div class="muted">Bid ${x.bid} / Ask ${x.ask}</div></div>`).join("");
-$("status").textContent="Server connected • Demo quotes";
-render();
-}catch(e){$("status").textContent="API connection error: "+e.message}
+const USERS_KEY="velqor_demo_users_v1";
+const SESSION_KEY="velqor_demo_session_v1";
+const API="https://velqor-markets-api.meshahzaibali.workers.dev/api/quotes";
+let mode="signup";
+let currentUser=null;
+let marketPrice=null;
+
+function getUsers(){
+  try{return JSON.parse(localStorage.getItem(USERS_KEY)||"[]")}
+  catch(e){return []}
 }
-function render(){
-let floating=0;
-positions.forEach(p=>{let q=quotes[p.symbol];if(q){p.current=q.mid;p.profit=(p.side==="BUY"?1:-1)*(p.current-p.open)*p.lots*(p.symbol==="XAUUSD"?100:10000);floating+=p.profit}});
-$("balance").textContent=money(balance);$("equity").textContent=money(balance+floating);$("floating").textContent=money(floating);
-$("positionsList").innerHTML=positions.map(p=>`<tr><td>${p.id}</td><td>${p.symbol}</td><td>${p.side}</td><td>${p.lots}</td><td>${p.open}</td><td>${Number(p.current||p.open).toFixed(3)}</td><td class="${p.profit>=0?'green':'red'}">${money(p.profit)}</td><td><button class="close" onclick="closePosition(${p.id})">Close</button></td></tr>`).join("")||"<tr><td colspan='8'>No open positions</td></tr>";
-$("historyList").innerHTML=history.map(p=>`<tr><td>${p.id}</td><td>${p.symbol}</td><td>${p.side}</td><td>${p.open}</td><td>${p.close}</td><td>${money(p.profit)}</td></tr>`).join("")||"<tr><td colspan='6'>No history yet</td></tr>";
-$("positionsList").setAttribute("data-count",positions.length);
+function saveUsers(users){
+  localStorage.setItem(USERS_KEY,JSON.stringify(users));
 }
-function order(){
-let symbol=$("symbol").value,q=quotes[symbol];
-if(!q){$("message").textContent="Price unavailable. Try again.";return}
-let side=$("side").value,price=side==="BUY"?q.ask:q.bid,lots=Number($("lots").value);
-positions.push({id:Date.now(),symbol,side,lots,open:price,current:price,profit:0,sl:$("sl").value,tp:$("tp").value});
-save();render();$("message").textContent="Demo order opened successfully.";
+function safeText(value){
+  return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
-function closePosition(id){
-let i=positions.findIndex(p=>p.id===id);if(i<0)return;
-let p=positions.splice(i,1)[0];balance+=p.profit||0;
-history.unshift({...p,close:p.current});save();render();
+function money(value){
+  return "$"+Number(value||0).toFixed(2);
 }
-function credit(){balance+=1000;save();render()}
-function resetDemo(){if(confirm("Reset demo account?")){balance=500;positions=[];history=[];save();render()}}
-load();refreshQuotes();setInterval(refreshQuotes,5000);
-</script>
-<script src="https://s3.tradingview.com/tv.js"></script>
-<script>
-window.addEventListener("load",function(){
-if(window.TradingView){new TradingView.widget({autosize:true,symbol:"OANDA:XAUUSD",interval:"5",timezone:"Asia/Karachi",theme:"dark",style:"1",locale:"en",enable_publishing:false,hide_top_toolbar:false,container_id:"tradingview"});}
-});
+function switchAuth(){
+  mode=mode==="signup"?"login":"signup";
+  document.getElementById("authTitle").textContent=mode==="signup"?"Create Demo Account":"Login to VELQOR";
+  document.getElementById("authButton").textContent=mode==="signup"?"CREATE ACCOUNT":"LOGIN";
+  document.getElementById("switchButton").textContent=mode==="signup"?"Already have an account? Login":"New here? Create an account";
+  document.getElementById("nameBox").classList.toggle("hidden",mode==="login");
+  document.getElementById("authMessage").textContent="";
+}
+async function passwordHash(password,salt){
+  const encoder=new TextEncoder();
+  const key=await crypto.subtle.importKey("raw",encoder.encode(password),"PBKDF2",false,["deriveBits"]);
+  const bits=await crypto.subtle.deriveBits({name:"PBKDF2",salt:encoder.encode(salt),iterations:100000,hash:"SHA-256"},key,256);
+  return Array.from(new Uint8Array(bits)).map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+async function submitAuth(){
+  const message=document.getElementById("authMessage");
+  const email=document.getElementById("email").value.trim().toLowerCase();
+  const password=document.getElementById("password").value;
+  const name=document.getElementById("name").value.trim();
+  message.textContent="";
+  if(!email||!email.includes("@")){message.textContent="Please enter a valid email.";return}
+  if(password.length<6){message.textContent="Password must be at least 6 characters.";return}
+  const users=getUsers();
+  if(mode==="signup"){
+    if(!name){message.textContent="Please enter your name.";return}
+    if(users.some(u=>u.email===email)){message.textContent="This email already has an account. Please login.";return}
+    const salt=crypto.randomUUID();
+    const hash=await passwordHash(password,salt);
+    const user={id:crypto.randomUUID(),name,email,salt,hash,balance:500,positions:[]};
+    users.push(user);
+    saveUsers(users);
+    openAccount(user);
+  }else{
+    const user=users.find(u=>u.email===email);
+    if(!user){message.textContent="Account not found. Please sign up first.";return}
+    const hash=await passwordHash(password,user.salt);
+    if(hash!==user.hash){message.textContent="Incorrect password.";return}
+    openAccount(user);
+  }
+}
+function openAccount(user){
+  currentUser=user;
+  localStorage.setItem(SESSION_KEY,user.id);
+  document.getElementById("authScreen").classList.add("hidden");
+  document.getElementById("dashboard").classList.remove("hidden");
+  document.getElementById("userName").textContent=user.name;
+  document.getElementById("tradeMessage").textContent="";
+  updateDashboard();
+}
+function logout(){
+  localStorage.removeItem(SESSION_KEY);
+  currentUser=null;
+  document.getElementById("dashboard").classList.add("hidden");
+  document.getElementById("authScreen").classList.remove("hidden");
+  document.getElementById("password").value="";
+}
+function saveCurrentUser(){
+  const users=getUsers();
+  const index=users.findIndex(u=>u.id===currentUser.id);
+  if(index!==-1){users[index]=currentUser;saveUsers(users)}
+}
+function openProfit(){
+  return (currentUser.positions||[]).reduce((sum,p)=>{
+    if(!marketPrice)return sum;
+    const difference=p.type==="BUY"?marketPrice-p.entry:p.entry-marketPrice;
+    return sum+difference*p.volume*100;
+  },0);
+}
+function updateDashboard(){
+  if(!currentUser)return;
+  const pnl=openProfit();
+  document.getElementById("balance").textContent=money(currentUser.balance);
+  document.getElementById("equity").textContent=money(currentUser.balance+pnl);
+  document.getElementById("profit").textContent=money(pnl);
+  document.getElementById("profit").style.color=pnl>=0?"#65d6a1":"#ff7777";
+  const body=document.getElementById("positions");
+  body.innerHTML="";
+  (currentUser.positions||[]).forEach((p,i)=>{
+    const difference=marketPrice?(p.type==="BUY"?marketPrice-p.entry:p.entry-marketPrice):0;
+    const profit=difference*p.volume*100;
+    const tr=document.createElement("tr");
+    tr.innerHTML="<td>"+p.type+"</td><td>"+p.volume.toFixed(2)+"</td><td>"+p.entry.toFixed(2)+"</td><td>"+money(profit)+"</td><td><button class='secondary' style='width:auto;margin:0;padding:7px' onclick='closeTrade("+i+")'>CLOSE</button></td>";
+    body.appendChild(tr);
+  });
+  if(!body.children.length)body.innerHTML="<tr><td colspan='5'>No open positions</td></tr>";
+}
+function placeTrade(type){
+  const message=document.getElementById("tradeMessage");
+  const volume=Number(document.getElementById("volume").value);
+  if(!currentUser){message.textContent="Please login first.";return}
+  if(!marketPrice||marketPrice<=0){message.textContent="Market price is not available yet.";return}
+  if(!Number.isFinite(volume)||volume<0.01||volume>1){message.textContent="Volume must be between 0.01 and 1 lot.";return}
+  currentUser.positions.push({type,volume,entry:marketPrice,created:Date.now()});
+  saveCurrentUser();
+  updateDashboard();
+  message.textContent=type+" demo order opened at "+marketPrice.toFixed(2);
+  message.className="success";
+}
+function closeTrade(index){
+  const p=currentUser.positions[index];
+  if(!p||!marketPrice)return;
+  const difference=p.type==="BUY"?marketPrice-p.entry:p.entry-marketPrice;
+  const profit=difference*p.volume*100;
+  currentUser.balance+=profit;
+  currentUser.positions.splice(index,1);
+  saveCurrentUser();
+  updateDashboard();
+}
+function readQuote(data){
+  const source=data.quotes||data.data||data;
+  let item=Array.isArray(source)?source.find(x=>(x.symbol||x.name)==="XAUUSD"):source.XAUUSD;
+  if(!item&&source.symbol==="XAUUSD")item=source;
+  if(typeof item==="number")return item;
+  if(typeof item==="string")return Number(item);
+  if(item){
+    const price=Number(item.price??item.last??item.bid??item.close??item.ask);
+    if(Number.isFinite(price)&&price>0)return price;
+  }
+  return null;
+}
+async function loadQuotes(){
+  try{
+    const response=await fetch(API,{cache:"no-store"});
+    if(!response.ok)throw new Error("Market feed unavailable");
+    const data=await response.json();
+    const price=readQuote(data);
+    if(!price)throw new Error("XAUUSD price not found in feed");
+    marketPrice=price;
+    document.getElementById("goldPrice").textContent=price.toFixed(2);
+    document.getElementById("quoteStatus").textContent="Demo market feed connected";
+    updateDashboard();
+  }catch(error){
+    document.getElementById("quoteStatus").textContent="Market feed unavailable. Please try again later.";
+  }
+}
+function loadChart(){
+  if(window.TradingView){
+    new TradingView.widget({
+      autosize:true,
+      symbol:"OANDA:XAUUSD",
+      interval:"5",
+      timezone:"Asia/Karachi",
+      theme:"dark",
+      style:"1",
+      locale:"en",
+      enable_publishing:false,
+      hide_top_toolbar:false,
+      allow_symbol_change:true,
+      container_id:"tv_chart"
+    });
+  }
+}
+function start(){
+  const session=localStorage.getItem(SESSION_KEY);
+  const user=getUsers().find(u=>u.id===session);
+  if(user)openAccount(user);
+  loadQuotes();
+  setInterval(loadQuotes,5000);
+  loadChart();
+}
+const chartScript=document.createElement("script");
+chartScript.src="https://s3.tradingview.com/tv.js";
+chartScript.onload=loadChart;
+document.head.appendChild(chartScript);
+start();
 </script>
 </body>
 </html>
